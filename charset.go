@@ -50,6 +50,12 @@ func charsetReader(charset string, input io.Reader) (io.Reader, error) {
 	return input, UnknownCharsetError{fmt.Errorf("message: unhandled charset %q", charset)}
 }
 
+// DecodeHeader decodes an internationalized header field. If it fails, it
+// returns the input string and the error.
+func DecodeHeader(s string) (string, error) {
+	return decodeHeader(s)
+}
+
 // decodeHeader decodes an internationalized header field. If it fails, it
 // returns the input string and the error.
 func decodeHeader(s string) (string, error) {
